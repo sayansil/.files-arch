@@ -1,0 +1,33 @@
+# Ignore everything else
+/*
+
+# Except...
+!.gitignore
+!waybar
+!vesktop
+vesktop/Crashpad
+vesktop/sessionData
+!tofi
+!tlpui
+!Thunar
+!rog
+!rofi
+!picom
+!paru
+!nvim
+!nnn
+!nitrogen
+!neovide
+!ncspot
+ncspot/userstate.cbor
+!mirage
+mirage/accel_map
+!i3blocks
+!i3
+!hypr
+!htop
+!gtk-3.0
+!fastfetch
+!dunst
+!btop
+btop.log

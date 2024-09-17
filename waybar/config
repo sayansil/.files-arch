@@ -1,0 +1,140 @@
+{
+    "ipc": true,
+    "layer": "overlay",
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock", "idle_inhibitor", "privacy", "tray"],
+    "modules-right": ["network", "pulseaudio", "battery", "custom/mode", "custom/temp", "custom/pkgupdate", "custom/power"],
+
+    
+	"hyprland/workspaces": {
+		"format": "  {icon} {windows} ",
+        "format-window-separator": " ",
+        "window-rewrite-default": "",
+        "window-rewrite": {
+            "title<.*youtube.*>": "",
+            "class<brave-browser>": "",
+            "class<google-chrome>": "",
+            "class<jetbrains-studio>": "",
+            "class<thunar*>": "",
+            "class<org.kde.konsole>": "",
+            "class<neovide>": "",
+            "class<discord>": "",
+            "class<vesktop>": "",
+            "code": "󰨞"
+        }
+	},
+    "network": {
+        "tooltip": true,
+        "format-wifi": " ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "format-ethernet": "{ifname} ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "format-disconnected": "", 
+        "max-length": 50,
+        "on-click": "konsole -e 'nmtui'"
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+		"on-click": "~/.config/waybar/scripts/toggleEye.sh"
+    },
+    "privacy": {
+        "icon-spacing": 8,
+        "icon-size": 15,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "format": "{icon}",
+                "type": "screenshare",
+                "tooltip": true
+            },
+            {
+                "format": "{icon}",
+                "type": "audio-out",
+                "tooltip": true
+            },
+            {
+                "format": "{icon}",
+                "type": "audio-in",
+                "tooltip": true
+            }
+        ]
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "  {:%a  %I:%M %p}",
+	    "on-click": "gnome-calendar"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "0% {icon} ",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+	"custom/power": {
+		"format": " ",
+        "tooltip": false,
+		"on-click": "wlogout"
+	},
+	"custom/mode": {
+		"format": " {icon} ",
+        "tooltip": true,
+        "tooltip-format": "Mode: {}",
+        "exec": "~/.config/waybar/scripts/getFanMode.sh",
+        "exec-on-event": true,
+        "return-type": "json",
+        "interval": 15,
+        "format-icons": {
+            "quiet": "",
+            "balanced": "",
+            "performance": ""
+        },
+		"on-click": "~/.config/waybar/scripts/toggleFanMode.sh"
+	},
+    "custom/pkgupdate": {
+        "format": " ",
+        "tooltip": true,
+        "exec": "~/.config/waybar/scripts/getUpdateCount.sh",
+        "exec-on-event": true,
+        "return-type": "json",
+        "interval": "once",
+        "on-click": ";"
+    },
+    "custom/temp": {
+        "format": "   {}°C",
+        "tooltip": false,
+        "exec": "~/.config/waybar/scripts/getCPUMode.sh",
+        "return-type": "json",
+        "interval": 15
+    },
+    "custom/gputemp": {
+        "format": " {}°C ",
+        "tooltip": false,
+        "exec": "~/.config/waybar/scripts/getGPUTemp.sh",
+        "return-type": "json",
+        "interval": 30
+    }
+}
